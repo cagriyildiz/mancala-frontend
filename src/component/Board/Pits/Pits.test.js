@@ -1,10 +1,11 @@
 import {render} from '@testing-library/react';
 import Pits from "./Pits";
 import {UserEnum} from "../../User/constant";
+import {getGameState} from "../Board.test";
 
 test('renders pits', () => {
   const handleClick = jest.fn();
-  const pits = [6, 6, 6, 6, 6, 6];
+  const pits = getGameState()[0].pits;
   const {container} = render(
     <Pits player={UserEnum.FIRST} activePlayer={UserEnum.FIRST} pits={pits} moveStones={handleClick}/>
   );

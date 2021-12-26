@@ -26,7 +26,7 @@ const Game = () => {
 
   const setNextGameState = (response) => {
     setActivePlayer(response.data.activePlayer);
-    setGameState(response.data.board.pits);
+    setGameState(response.data.board.state);
   };
 
   const startGame = () => {
@@ -67,7 +67,7 @@ const Game = () => {
         <Button text="Play Mancala" clicked={startGame}/>
         <User playing={playing} user={UserEnum.SECOND} isActive={activePlayer === UserEnum.SECOND}/>
         <Board show={playing}
-               pits={gameState}
+               state={gameState}
                activePlayer={activePlayer}
                moveStones={moveStonesHandler}/>
         <User playing={playing} user={UserEnum.FIRST} isActive={activePlayer === UserEnum.FIRST}/>

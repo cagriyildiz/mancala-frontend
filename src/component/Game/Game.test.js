@@ -1,6 +1,7 @@
 import {act, fireEvent, render, screen} from '@testing-library/react';
 import axios from "axios";
 import Game from "./Game";
+import {getGameState} from "../Board/Board.test";
 
 const postResponseBody = Object.freeze({
   id: "10852890-a89d-4ee7-bc5b-853f60a7fbec",
@@ -15,10 +16,7 @@ const postResponseBody = Object.freeze({
   finished: false,
   board: {
     id: 1,
-    pits: [
-      [6, 6, 6, 6, 6, 6, 0],
-      [6, 6, 6, 6, 6, 6, 0]
-    ]
+    state: getGameState()
   }
 });
 
@@ -35,10 +33,10 @@ const getResponseBody = Object.freeze({
   finished: false,
   board: {
     id: 1,
-    pits: [
+    state: getGameState([
       [0, 7, 7, 7, 7, 7, 1],
       [6, 6, 6, 6, 6, 6, 0]
-    ]
+    ])
   }
 });
 
@@ -55,10 +53,10 @@ const getResponseBodyGameFinished = Object.freeze({
   finished: true,
   board: {
     id: 1,
-    pits: [
+    state: getGameState([
       [0, 0, 0, 0, 0, 0, 41],
       [0, 0, 0, 0, 0, 0, 31]
-    ]
+    ])
   }
 });
 
